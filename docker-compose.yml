@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  my-app-redis:
+    image: redis
+    container_name: my-app-redis-2
+    ports:
+      - "6379:6379"
+  # my-app-api:
+  #   build: .
+  #   container_name: my-app-api-1
+  #   ports:
+  #     - "3001:3001"
+  #   depends_on:
+  #     - my-app-redis
+  #   command: "node index.js"
+  my-app-frontend:
+    image: nginx:latest
+    container_name: my-app-frontend-1
+    ports:
+      - "80:80"
+    volumes:
+      - ./public:/usr/share/nginx/html
+   
